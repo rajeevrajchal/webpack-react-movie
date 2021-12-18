@@ -16,13 +16,12 @@ const webpackConfig = (): Configuration => ({
     },
     output: {
         path: path.join(__dirname, '/build'),
-        publicPath: '/',
         filename: 'build.js',
     },
     module: {
         rules: [
             {
-                test: /\.(tsx?$|js$|jsx|ts)/,
+                test: /\.tsx?$/,
                 loader: 'ts-loader',
                 options: {
                     transpileOnly: true,
@@ -66,7 +65,6 @@ const webpackConfig = (): Configuration => ({
                     },
                 ],
             },
-            { test: /\.txt$/, use: 'raw-loader' },
         ],
     },
     devServer: {
