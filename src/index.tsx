@@ -6,7 +6,7 @@ import App from './App';
 import { AppDataProvider } from './context/useAppData';
 
 const app = (
-    <ChakraProvider resetCSS={true}>
+    <ChakraProvider>
         <AppDataProvider>
             <App />
         </AppDataProvider>
