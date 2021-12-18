@@ -2,33 +2,42 @@ import { useState } from 'react';
 import { toast } from 'react-toastify';
 
 import { MoviesType } from '../types/movie';
+import { callAxios } from '../plugins/call.axios';
 
 const useMovie = () => {
     // states
     const [movies, setMovies] = useState<MoviesType[]>([]);
 
     // functions
-    const getMovies = () => {
-        console.log('getting movies');
-        setMovies([
-            {
-                id: 38552,
-                image: 'https://yts.mx/assets/images/movies/13_2010/background.jpg',
-                title: 'Man in the Saddle',
-                title_long: 'Man in the Saddle (1951)',
-                isFavourite: false,
-                author: 'lorem',
-                description:
-                    'A small farmer and rancher is being harassed by his mighty and powerfull neighbour. When the neighbour even hires gunmen to intimidate him he has to defend himself and his property by means of violence. —Volker Boehm',
-            },
-        ]);
-    };
-
-    const addToFavourite = (movieID: string | number) => {
-        console.log('hello world', {
-            movieID,
+    const getMovies = async () => {
+        const response = await callAxios({
+            url: 'movies',
+            method: 'GET',
         });
-        toast.success('Moved added to favourite');
+        if (response && response.status === 'success') {
+            setMovies([...response.movies]);
+        } else {
+            toast.error('Fetching movie failed');
+        }
+    };
+    const addToFavourite = async (movieID: string | number) => {
+        const response = await callAxios({
+            url: `movies/${movieID}`,
+            method: 'PUT',
+        });
+        console.log('the response', response);
+        // refetch the data
+        if (response && response.status === 'success') {
+            getMovies();
+            toast.success(
+                response.movie.isFavourite
+                    ? 'Movie marked as favourite'
+                    : 'Movie removed from favourite'
+            );
+        } else {
+            // case of error
+            toast.error('Action failed');
+        }
     };
 
     return {
