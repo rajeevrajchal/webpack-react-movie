@@ -9,8 +9,12 @@ interface CallAxiosAPI {
     params?: any;
 }
 
-const baseUrl = 'http://localhost:8000/api/';
+const baseUrl =
+    process.env.NODE_ENV === 'production'
+        ? 'https://movie-backend-test.herokuapp.com/api/'
+        : 'http://localhost:8000/api/';
 
+console.log('env', process.env.NODE_ENV);
 export const callAxios = ({
     url,
     method,
