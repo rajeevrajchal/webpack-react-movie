@@ -66,6 +66,7 @@ const webpackConfig = (): Configuration => ({
                     },
                 ],
             },
+            { test: /\.txt$/, use: 'raw-loader' },
         ],
     },
     devServer: {
