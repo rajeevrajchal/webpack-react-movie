@@ -4,6 +4,7 @@ import HtmlWebpackPlugin from 'html-webpack-plugin';
 import ForkTsCheckerWebpackPlugin from 'fork-ts-checker-webpack-plugin';
 import TsconfigPathsPlugin from 'tsconfig-paths-webpack-plugin';
 import MiniCssExtractPlugin from 'mini-css-extract-plugin';
+import ChakraLoaderPlugin from 'chakra-loader';
 
 const webpackConfig = (): Configuration => ({
     entry: './src/index.tsx',
@@ -94,6 +95,7 @@ const webpackConfig = (): Configuration => ({
             filename: 'css/[name].css',
             chunkFilename: 'css/[id].css',
         }),
+        new ChakraLoaderPlugin(),
     ],
 });
 
