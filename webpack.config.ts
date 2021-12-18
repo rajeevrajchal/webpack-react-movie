@@ -15,7 +15,7 @@ const webpackConfig = (): Configuration => ({
         plugins: [new TsconfigPathsPlugin({ configFile: './tsconfig.json' })],
     },
     output: {
-        path: path.resolve(__dirname, 'build'),
+        path: path.join(__dirname, '/build'),
         publicPath: '/',
         filename: 'build.js',
     },
@@ -76,8 +76,7 @@ const webpackConfig = (): Configuration => ({
     plugins: [
         new HtmlWebpackPlugin({
             // HtmlWebpackPlugin simplifies creation of HTML files to serve your webpack bundles
-            // template: './public/index.html',
-            template: path.resolve('./index.html'),
+            template: './public/index.html',
         }),
         // DefinePlugin allows you to create global constants which can be configured at compile time
         new DefinePlugin({
