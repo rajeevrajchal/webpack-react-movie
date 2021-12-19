@@ -22,6 +22,7 @@ The app is built with Webpack and Babel using typescript
     > Used for simple code commit protection with rule defined on eslint. [Read More](https://typicode.github.io/husky/#/)
 
 # State Management
+
 > Used react context api & custom hooks for simple state mangement.
 
 # Useful commands
@@ -43,3 +44,8 @@ yarn start
 ```
 
 > Once you run above command, the app will run on port 3000. https://localhost:3000/
+
+# Reference
+
+1. [easy-custom-webpack-setup-for-react-js-applications](https://blog.jscrambler.com/easy-custom-webpack-setup-for-react-js-applications)
+2. [setup-react-with-webpack-and-babel](https://medium.com/age-of-awareness/setup-react-with-webpack-and-babel-5114a14a47e9)
