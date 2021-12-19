@@ -14,7 +14,6 @@ const baseUrl =
         ? 'https://movie-backend-test.herokuapp.com/api/'
         : 'http://localhost:8000/api/';
 
-console.log('env', process.env.NODE_ENV);
 export const callAxios = ({
     url,
     method,

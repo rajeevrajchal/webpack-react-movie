@@ -11,7 +11,7 @@ const MovieAuthor = () => {
                     }
                     alt={'john wicxkey'}
                     objectFit={'cover'}
-                    height={'100%'}
+                    height={{ base: '50%', lg: "100%'" }}
                     width={'100%'}
                 />
             </Box>
